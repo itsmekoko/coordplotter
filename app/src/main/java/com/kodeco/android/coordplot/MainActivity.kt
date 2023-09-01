@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -56,14 +58,43 @@ fun PlotSurface() {
                 .size(300.dp)
                 .background(Color.Blue),
         ) {
-            // TODO Build out the plot surface
-            //  This should include a Column composable that
-            //  includes a Map, and two MapSlider composables
-            //  (one slider for each axis).
+
         }
 
     }
+
+    Spacer(modifier = Modifier.height(16.dp))
+
+
+    Text(text = "X-axis")
+    Slider(
+        value = xPercent,
+        onValueChange = { newValue ->
+            xPercent = newValue  // Update the xPercent state
+        },
+        colors = SliderDefaults.colors(
+            thumbColor = Color.Red,
+            activeTrackColor = Color.Red
+        )
+    )
+
+    Spacer(modifier = Modifier.height(16.dp))
+
+    Text(text = "Y-axis")
+    Slider(
+        value = yPercent,
+        onValueChange = { newValue ->
+            yPercent = newValue  // Update the yPercent state
+        },
+        colors = SliderDefaults.colors(
+            thumbColor = Color.Red,
+            activeTrackColor = Color.Red
+        )
+    )
 }
+
+
+
 
 @Preview(showBackground = true)
 @Composable
@@ -73,18 +104,7 @@ fun PlotSurfacePreview() {
     }
 }
 
-@Composable
-fun Map(xPercent: Float, yPercent: Float, modifier: Modifier = Modifier) {
-    // TODO fill out the square map here.
-    //  Create a Box composable with a size of 300.dp
-    //  and then create an inner Box composable
-    //  with a clip shape of CircleShape.
-}
 
-@Preview(showBackground = true)
-@Composable
-fun MapPreview() {
-    MyApplicationTheme {
-        Map(xPercent = 0.5f, yPercent = 0.5f)
-    }
-}
+
+
+
